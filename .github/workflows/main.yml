@@ -18,3 +18,8 @@ jobs:
         node-version: 16
     - run: npm install  
     - run: npm ci 
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${{ secrets.SONAR_HOST_URL }}
+        login: ${{ secrets.SONAR_TOKEN }}
