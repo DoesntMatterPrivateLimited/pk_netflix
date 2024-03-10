@@ -89,8 +89,8 @@ jobs:
 
     - name: Deploy to eks
       run: |
-        kubectl apply -f kubernetes/deployment.yml
-        kubectl apply -f kubernetes/service.yml     
+        kubectl apply -f Kubernetes/deployment.yml
+        kubectl apply -f Kubernetes/service.yml     
      
       
            
