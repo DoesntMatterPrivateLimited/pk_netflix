@@ -84,6 +84,13 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
           args: --sarif-file-output=snyk.sarif
+    - name: Update kube config 
+      run: aws eks update-kubeconfig --name Netflix-cluster
+
+    - name: Deploy to eks
+      run: |
+        kubectl apply -f kubernetes/deployment.yml
+        kubectl apply -f kubernetes/service.yml     
      
       
            
