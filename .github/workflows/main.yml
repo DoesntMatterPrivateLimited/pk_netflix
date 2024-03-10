@@ -18,21 +18,34 @@ jobs:
         node-version: 16
     - run: npm install  
     - run: npm ci 
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@master
-      with:
-        host: ${{ secrets.SONAR_HOST_URL }}
-        login: ${{ secrets.SONAR_TOKEN }}
+    # - name: SonarQube Scan
+    #   uses: kitabisa/sonarqube-action@master
+    #   with:
+    #     host: ${{ secrets.SONAR_HOST_URL }}
+    #     login: ${{ secrets.SONAR_TOKEN }}
         
-    - name: Depcheck
-      uses: dependency-check/Dependency-Check_Action@main
-      id: Depcheck
-      with:
-          project: 'netflix-clone-using-react-typescript-mui'
-          path: '.'
-          format: 'HTML'
-    - name: Upload Test results
-      uses: actions/upload-artifact@master
-      with:
-           name: Depcheck report
-           path: ${{github.workspace}}/reports 
+    # - name: Depcheck
+    #   uses: dependency-check/Dependency-Check_Action@main
+    #   id: Depcheck
+    #   with:
+    #       project: 'netflix-clone-using-react-typescript-mui'
+    #       path: '.'
+    #       format: 'HTML'
+    # - name: Upload Test results
+    #   uses: actions/upload-artifact@master
+    #   with:
+    #        name: Depcheck report
+    #        path: ${{github.workspace}}/reports 
+    
+    # - name: Set up QEMU
+    #   uses: docker/setup-qemu-action@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+
+    - name: Run Trivy FS Scan
+      run: |
+        docker pull aquasec/trivy
+        docker run -v $(pwd):/workspace aquasec/trivy fs . > trivyfs.txt
+      
+           
