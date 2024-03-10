@@ -77,11 +77,9 @@ jobs:
             docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
             docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
              
-    - name: Snyk test         
-      uses: snyk/actions/node@master    
-      with:           
-         args: test         
-      env:        
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}        
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/node@master
+      env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}        
       
            
