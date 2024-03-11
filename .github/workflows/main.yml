@@ -1,4 +1,4 @@
-name: zomato
+name: Netflix
 on: 
   push:
     branches: [ "main" ]
@@ -29,6 +29,7 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: npm
         repository: Netflix
+        assets: extension=.js
         filename: /app/dist .
         
     # - name: SonarQube Scan
