@@ -21,14 +21,15 @@ jobs:
     - name: Build artifact
       run: npm run build
       
-    - name: Deploy to Nexus
-      uses: sonatype-nexus-community/nexus-actions/deploy@v1
+    - name: Nexus Repo Publish
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
       with:
-        url: ${{ secrets.NEXUS_URL }}
-        username: ${{ secrets.NEXUS_USERNAME }}
+        serverUrl: http://18.223.100.83:8081/
+        username: admin
         password: ${{ secrets.NEXUS_PASSWORD }}
-        repository: 'http://18.223.100.83:8081/repository/Netflix/'
-        file: 'dist/assets/index.js/.gz'
+        format: npm
+        repository: Netflix
+        filename: /app/dist .
         
     # - name: SonarQube Scan
     #   uses: kitabisa/sonarqube-action@master
