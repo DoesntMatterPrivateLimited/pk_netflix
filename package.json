@@ -32,5 +32,8 @@
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.1"
-  }
+  },
+  "publishConfig": {
+    "registry":"http://18.223.100.83:8081/repository/Netflix/"
+ }
 }
