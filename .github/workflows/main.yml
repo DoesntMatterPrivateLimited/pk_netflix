@@ -30,8 +30,8 @@ jobs:
         format: npm
         repository: Netflix
         coordinates: groupId=Netflix artifactId=Netflix version=3.65.0
-        assets: extension=.js
-        filename: /app/dist .js
+        assets: extension=gzip
+        filename: /app/dist .gzip
         
     
         
