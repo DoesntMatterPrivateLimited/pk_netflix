@@ -24,7 +24,7 @@ jobs:
       
     - name: Publish to Nexus
       run: |
-        npm publish --registry=http://18.223.100.83:8081/repository/Netflix/ 
+        npm adduser --registry=http://18.223.100.83:8081/repository/Netflix/ 
                     
                     
                
