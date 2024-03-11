@@ -27,7 +27,7 @@ jobs:
         url: ${{ secrets.NEXUS_URL }}
         username: ${{ secrets.NEXUS_USERNAME }}
         password: ${{ secrets.NEXUS_PASSWORD }}
-        repository: 'Netflix'
+        repository: 'npm'
         file: 'dist/assets/index.js/.gz'
         
     # - name: SonarQube Scan
