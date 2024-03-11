@@ -26,7 +26,7 @@ jobs:
       run: pwd
     - name: Publish to Nexus
       run: |
-        npm publish --registry=https://http://18.223.100.83:8081/repository/Netflix/ \
+        npm publish --registry=http://18.223.100.83:8081/repository/Netflix/ \
                     --access public \
                     --scope=@your-scope \
                     --tag latest \
