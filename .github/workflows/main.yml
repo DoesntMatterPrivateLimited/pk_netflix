@@ -35,7 +35,7 @@ jobs:
         repository: Netflix
         coordinates: groupId=com.example artifactId=app version=1.0.0
         assets: extension=zip
-        filename: /pk_netflix/dist.zip
+        filename: ./dist .zip
         
     
         
