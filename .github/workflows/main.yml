@@ -20,6 +20,16 @@ jobs:
     - run: npm ci
     - name: Build artifact
       run: npm run build
+      
+    - name: Deploy to Nexus
+      uses: sonatype-nexus-community/nexus-actions/deploy@v1
+      with:
+        url: ${{ secrets.NEXUS_URL }}
+        username: ${{ secrets.NEXUS_USERNAME }}
+        password: ${{ secrets.NEXUS_PASSWORD }}
+        repository: 'Netflix'
+        file: 'dist/assets/index.js/.gz'
+        
     # - name: SonarQube Scan
     #   uses: kitabisa/sonarqube-action@master
     #   with:
