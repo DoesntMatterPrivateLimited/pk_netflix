@@ -19,21 +19,14 @@ jobs:
     - run: npm install  
     - run: npm ci
     - name: Build artifact
-      run: npm run build
-    - name: ls
-      run: ls
-    - name: pwd  
-      run: pwd
-    - name: npm adduser
-      run: npm adduser
-      
+      run: npm run build     
   
       
     - name: Publish to Nexus
       run: |
         npm publish --registry=http://18.223.100.83:8081/repository/Netflix/ \
                     --access public \
-                    # --scope=npm \
+                    --scope=@your-scope \
                      --tag latest \
                     --user $NEXUS_USERNAME \
                     --password $NEXUS_PASSWORD
