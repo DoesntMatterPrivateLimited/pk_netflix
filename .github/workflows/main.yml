@@ -21,21 +21,17 @@ jobs:
     - name: Build artifact
       run: npm run build
       
-    # - name: Nexus Repo Publish
-    #   uses: sonatype-nexus-community/nexus-repo-github-action@master
-    #   with:
-    #     serverUrl: http://18.223.100.83:8081/
-    #     username: admin
-    #     password: ${{ secrets.NEXUS_PASSWORD }}
-    #     format: npm
-    #     repository: Netflix
-    #     assets: extension=.js
-    #     filename: /app/dist .
-    - name: Upload artifact to Nexus
-      run: |
-        curl -u ${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }} \
-            --upload-file /app/dist . \
-            "${{ secrets.NEXUS_URL }}/repository/Netflix/"
+    - name: Nexus Repo Publish
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
+      with:
+        serverUrl: http://18.223.100.83:8081/
+        username: admin
+        password: ${{ secrets.NEXUS_PASSWORD }}
+        format: npm
+        repository: Netflix
+        assets: extension=gz
+        filename: /app/dist .
+    
         
     # - name: SonarQube Scan
     #   uses: kitabisa/sonarqube-action@master
