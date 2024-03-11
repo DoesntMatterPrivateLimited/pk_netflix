@@ -31,8 +31,7 @@ jobs:
         repository: Netflix
         assets: extension=gzip
         filename: /app/dist .
-        C: groupId=0 artifactId=myapp version=1.0
-        A: extension=gzip classifier=bin0
+        
     
         
     # - name: SonarQube Scan
