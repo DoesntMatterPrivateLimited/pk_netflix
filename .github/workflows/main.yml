@@ -24,8 +24,8 @@ jobs:
       run: ls
     - name: pwd  
       run: pwd
-    - name: Authenticate with Nexus
-      run: npm adduser --registry=http://18.223.100.83:8081/repository/Netflix/ --always-auth
+    # - name: Authenticate with Nexus
+    #   run: npm adduser --registry=http://18.223.100.83:8081/repository/Netflix/ --always-auth
       
     - name: Publish to Nexus
       run: |
