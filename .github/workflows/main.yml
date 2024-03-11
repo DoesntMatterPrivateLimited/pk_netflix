@@ -25,9 +25,6 @@ jobs:
     - name: Publish to Nexus
       run: |
         npm publish --registry=http://18.223.100.83:8081/repository/Netflix/ \
-                    --access public \
-                    # --scope=@your-scope \
-                     --tag latest \
                     --user $NEXUS_USERNAME \
                     --password $NEXUS_PASSWORD
       env:
