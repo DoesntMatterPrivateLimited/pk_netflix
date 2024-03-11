@@ -29,8 +29,9 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: npm
         repository: Netflix
-        assets: extension=gzip
-        filename: /app/dist .
+        coordinates: groupId=Netflix artifactId=Netflix version=3.65.0
+        assets: extension=.js
+        filename: /app/dist .js
         
     
         
