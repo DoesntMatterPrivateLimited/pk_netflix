@@ -20,6 +20,10 @@ jobs:
     - run: npm ci
     - name: Build artifact
       run: npm run build
+    - name: ls
+      run: ls
+    - name: pwd  
+      run: pwd
       
     - name: Nexus Repo Publish
       uses: sonatype-nexus-community/nexus-repo-github-action@master
