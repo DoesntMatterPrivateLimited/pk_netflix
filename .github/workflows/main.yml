@@ -27,9 +27,8 @@ jobs:
         npm publish --registry=http://18.223.100.83:8081/repository/Netflix/ \
                     --user ${{ secrets.NEXUS_USERNAME }} \
                     --password ${{ secrets.NEXUS_PASSWORD }}
-      env:
-        NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-        NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}  
+        npm publish            
+     
     # - name: Nexus Repo Publish
     #   uses: sonatype-nexus-community/nexus-repo-github-action@master
     #   with:
