@@ -34,7 +34,5 @@
     "vite": "^3.2.1"
   },
   
-  "publishConfig": {
-    "registry":"http://18.224.137.28:8081/repository/nuget-hosted/"
- }
+  
 }
