@@ -23,7 +23,7 @@ jobs:
   
       
     - name: Publish to Nexus
-      run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/
+      run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/ --access public --user $NEXUS_USERNAME --password $NEXUS_PASSWORD
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}
                     
