@@ -56,11 +56,11 @@ jobs:
     #   run: |
     #     docker pull aquasec/trivy
     #     docker run -v $(pwd):/workspace aquasec/trivy fs . > trivyfs.txt
-    - name: Remove .kube file
-      run: |
-        rm -rf $HOME/.kube
+    # - name: Remove .kube file
+    #   run: |
+    #     rm -rf $HOME/.kube
        
-      continue-on-error: true
+    #   continue-on-error: true
     
     - name: Install kubectl
       uses: azure/setup-kubectl@v3.0
@@ -78,9 +78,9 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Increment and Get Tag
-      id: increment_tag
-      run: echo "::set-output name=tag::$(expr ${{ github.run_number }} + 1)"
+    # - name: Increment and Get Tag
+    #   id: increment_tag
+    #   run: echo "::set-output name=tag::$(expr ${{ github.run_number }} + 1)"
 
       
     - name: Build, tag, and push docker image to Amazon ECR
