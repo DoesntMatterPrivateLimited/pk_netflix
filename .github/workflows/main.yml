@@ -56,6 +56,12 @@ jobs:
     #   run: |
     #     docker pull aquasec/trivy
     #     docker run -v $(pwd):/workspace aquasec/trivy fs . > trivyfs.txt
+    - name: Remove .kube file
+      run: |
+        rm -rf $HOME/.kube
+       
+      continue-on-error: true
+    
     - name: Install kubectl
       uses: azure/setup-kubectl@v3.0
       with: 
