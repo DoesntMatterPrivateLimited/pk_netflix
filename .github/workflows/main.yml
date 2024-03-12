@@ -29,9 +29,9 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: nuget
         repository: nuget-hosted  # Adjust the Nexus repository name as needed
-        coordinates: org=npm package=my-package version=1.0.0
+        coordinates: org=npm package=my-package version=0.1.1
         assets: extension=tar.gz
-        filename: ./dist/my-package-1.0.0.tar.gz  # Adjust the file path as needed
+        filename: ./dist/assets/index.6ec9abd9.js   .tar.gz  # Adjust the file path as needed
         
     # - name: Authenticate with Nexus
     #   run: npm adduser --registry=http://18.224.137.28:8081/repository/nuget-hosted/
