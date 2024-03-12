@@ -21,10 +21,10 @@ jobs:
     - name: Build artifact
       run: npm run build
       
-    - name: Publish to Nexus
-      run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/ 
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}     
+    # - name: Publish to Nexus
+    #   run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/ 
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}     
     
         
     # - name: SonarQube Scan
@@ -56,35 +56,35 @@ jobs:
     #   run: |
     #     docker pull aquasec/trivy
     #     docker run -v $(pwd):/workspace aquasec/trivy fs . > trivyfs.txt
-    # - name: Install kubectl
-    #   uses: azure/setup-kubectl@v3.0
-    #   with: 
-    #     version: 'v1.29.0' 
-    #   id: install
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v3.0
+      with: 
+        version: 'v1.29.0' 
+      id: install
     
-    # - name: Configure AWS Credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with: 
-    #      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #      aws-region: us-east-2
-    # - name: Login to Amazon ECR
-    #   id: login-ecr
-    #   uses: aws-actions/amazon-ecr-login@v2
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with: 
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: us-east-2
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
 
-    # - name: Increment and Get Tag
-    #   id: increment_tag
-    #   run: echo "::set-output name=tag::$(expr ${{ github.run_number }} + 1)"
+    - name: Increment and Get Tag
+      id: increment_tag
+      run: echo "::set-output name=tag::$(expr ${{ github.run_number }} + 1)"
 
       
-    # - name: Build, tag, and push docker image to Amazon ECR
-    #   env:
-    #       REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    #       REPOSITORY: netflix-ecr
-    #       IMAGE_TAG: latest
-    #   run: |
-    #         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-    #         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+    - name: Build, tag, and push docker image to Amazon ECR
+      env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: netflix-ecr
+          IMAGE_TAG: latest
+      run: |
+            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
              
     # - name: Run Snyk to check for vulnerabilities
     #   uses: snyk/actions/node@master
@@ -96,10 +96,11 @@ jobs:
     # - name: Update kube config 
     #   run: aws eks update-kubeconfig --name Netflix-cluster
 
-    # - name: Deploy to eks
-    #   run: |
-    #     kubectl apply -f Kubernetes/deployment.yml
-    #     kubectl apply -f Kubernetes/service.yml     
+    - name: Deploy to eks
+      run: |
+        kubectl apply -f Kubernetes/deployment.yml
+        kubectl apply -f Kubernetes/service.yml 
+        kubectl apply -f Kubernetes/node-service.yml
      
       
            
