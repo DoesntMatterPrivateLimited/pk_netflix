@@ -21,28 +21,16 @@ jobs:
     - name: Build artifact
       run: npm run build
       
-    - name: Nexus Repo Publish
-      uses: sonatype-nexus-community/nexus-repo-github-action@master
-      with:
-        serverUrl: http://18.224.137.28:8081/
-        username: admin
-        password: ${{ secrets.NEXUS_PASSWORD }}
-        format: nuget
-        repository: nuget-hosted  # Adjust the Nexus repository name as needed
-        coordinates: org=npm package=my-package version=0.1.1
-        assets: extension=tar.gz
-        filename: ./dist/assets/index.6ec9abd9.js   .tar.gz  # Adjust the file path as needed
         
-    # - name: Authenticate with Nexus
-    #   run: npm adduser --registry=http://18.224.137.28:8081/repository/nuget-hosted/
-    #   env:
-    #     NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-    #     NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+    - name: Authenticate with Nexus
+      run: npm adduser --registry=http://18.224.137.28:8081/repository/nuget-hosted/ --scope=@your-scope --always-auth
+      env:
+        NPM_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}
       
-    # - name: Publish to Nexus
-    #   run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/ 
-    #   env:
-    #     NODE_AUTH_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}
+    - name: Publish to Nexus
+      run: npm publish --registry=http://18.224.137.28:8081/repository/nuget-hosted/ 
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NEXUS_AUTH_TOKEN }}
         
                     
                     
