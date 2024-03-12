@@ -106,7 +106,6 @@ jobs:
       run: |
         kubectl apply -f Kubernetes/deployment.yml 
         kubectl apply -f Kubernetes/service.yml 
-        kubectl apply -f Kubernetes/node-service.yml
      
       
            
