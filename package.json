@@ -34,6 +34,6 @@
     "vite": "^3.2.1"
   },
   "publishConfig": {
-    "registry":"http://18.223.100.83:8081/repository/Netflix/"
+    "registry":"http://18.224.137.28:8081/repository/nuget-hosted/"
  }
 }
