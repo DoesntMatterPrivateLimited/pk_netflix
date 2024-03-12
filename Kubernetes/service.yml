@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-    targetPort: 81
+    targetPort: 80
     
   selector:
     app: netflix-app
