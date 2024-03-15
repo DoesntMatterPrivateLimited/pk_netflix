@@ -117,7 +117,7 @@ jobs:
 
     - name: Upload files to S3
       run: |
-        aws s3 cp ./dist/index.js s3://zomato-adrak/artifact/
+        aws s3 cp ./dist/index.*.js s3://zomato-adrak/artifact/
      
       
            
