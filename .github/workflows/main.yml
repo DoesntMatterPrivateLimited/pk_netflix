@@ -119,7 +119,7 @@ jobs:
 
     - name: Upload files to S3
       run: |
-        aws s3 sync dist.zip s3://netflix-lasan/netflix-artifact/
+        aws s3 cp dist.zip s3://netflix-lasan/netflix-artifact/
      
       
            
