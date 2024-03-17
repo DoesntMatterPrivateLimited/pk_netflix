@@ -107,17 +107,19 @@ jobs:
     #     kubectl apply -f Kubernetes/deployment.yml 
     #     kubectl apply -f Kubernetes/service.yml
     #     kubectl apply -f Kubernetes/node-service.yaml
+    - name: Zip files
+      run: zip -r dist.zip dist
     
     - name: Upload artifacts to S3
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
+        aws-region: ap-south-1
 
     - name: Upload files to S3
       run: |
-        aws s3 sync dist s3://zomato-adrak/Netflix-artifact/
+        aws s3 sync dist.zip s3://netflix-lasan/netflix-artifact/
      
       
            
