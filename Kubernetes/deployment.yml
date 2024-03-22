@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: netflix-ecr
-        image: 590183663006.dkr.ecr.us-east-2.amazonaws.com/netflix-ecr:latest
+        image: utkarshkhode/netflix:latest
         ports:
         - containerPort: 80
