@@ -1,10 +1,10 @@
 {
-  "applicationName": "AppECS-new-new-svc",
-  "deploymentGroupName": "DgpECS-new-new-svc",
+  "applicationName": "AppECS-uk-nt-svc",
+  "deploymentGroupName": "DgpECS-uk-nt-svc",
   "revision": {
     "revisionType": "AppSpecContent",
     "appSpecContent": {
-      "content": "{\"version\":1,\"Resources\":[{\"TargetService\":{\"Type\":\"AWS::ECS::Service\",\"Properties\":{\"TaskDefinition\":\"TASK_DEF_ARN\",\"LoadBalancerInfo\":{\"ContainerName\":\"youtube\",\"ContainerPort\":80}}}}]}"
+      "content": "{\"version\":1,\"Resources\":[{\"TargetService\":{\"Type\":\"AWS::ECS::Service\",\"Properties\":{\"TaskDefinition\":\"TASK_DEF_ARN\",\"LoadBalancerInfo\":{\"ContainerName\":\"netflix\",\"ContainerPort\":80}}}}]}"
     }
   }
 }
