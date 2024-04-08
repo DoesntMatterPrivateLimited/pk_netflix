@@ -1,5 +1,5 @@
 {
-    "family": "uk-td",
+    "family": "netflix-td",
     "containerDefinitions": [
         {
             "name": "netflix",
@@ -24,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/uk-td",
+                    "awslogs-group": "/ecs/netflix-td",
                     "awslogs-region": "ap-south-2",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -38,8 +38,8 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": "1331",
-    "memory": "3174",
+    "cpu": "1024",
+    "memory": "1024",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
