@@ -244,6 +244,53 @@ Certainly, here are the instructions without step numbers:
 - Add the tool's name, e.g., "DP-Check."
 - Save your settings.
 
+**Example**
+```
+STEP 2: Add NVD API Key to Jenkins
+---------------------------------------------------
+ 
+Jenkins → Manage Jenkins → Credentials → Global → Add Credentials
+ 
+Kind:
+    Secret text
+ 
+Secret:
+<Paste your NVD API Key>
+ 
+ID:
+    nvd-api-key
+ 
+Description:
+    NVD API Key
+ 
+Click Save.
+ 
+---------------------------------------------------
+STEP 3: Update Jenkins Pipeline
+---------------------------------------------------
+ 
+stage('OWASP FS SCAN') {
+    steps {
+        withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
+            dependencyCheck(
+                odcInstallation: 'DP-Check',
+                additionalArguments: """
+                    --scan ./ \
+                    --data /var/lib/dependency-check \
+                    --disableYarnAudit \
+                    --disableNodeAudit \
+                    --nvdApiKey ${NVD_API_KEY}
+                """
+            )
+        }
+ 
+        dependencyCheckPublisher(
+            pattern: '**/dependency-check-report.xml'
+        )
+    }
+}
+```
+
 **Install Docker Tools and Docker Plugins:**
 
 - Go to "Dashboard" in your Jenkins web interface.
